@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity
 import cc.aoeiuv020.youdao.dagger.component.DaggerYouDaoComponent
 import cc.aoeiuv020.youdao.dagger.entity.Translation
 import cc.aoeiuv020.youdao.dagger.module.HelloModule
+import cc.aoeiuv020.youdao.dagger.module.YouDaoModule
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -20,12 +23,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         search.setOnClickListener {
-            DaggerYouDaoComponent.builder()
-                    .helloModule(HelloModule("${word.text}"))
-                    .build()
-                    .inject(this)
-            phonetic.text = translation.phonetic
-            explains.text = translation.explains
+            doAsync {
+                DaggerYouDaoComponent.builder()
+                        .youDaoModule(YouDaoModule("${word.text}"))
+                        .build()
+                        .inject(this@MainActivity)
+                uiThread {
+                    phonetic.text = translation.phonetic
+                    explains.text = translation.explains
+                }
+            }
         }
     }
 }

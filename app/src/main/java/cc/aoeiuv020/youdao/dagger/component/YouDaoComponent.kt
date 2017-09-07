@@ -2,6 +2,7 @@ package cc.aoeiuv020.youdao.dagger.component
 
 import cc.aoeiuv020.youdao.MainActivity
 import cc.aoeiuv020.youdao.dagger.module.HelloModule
+import cc.aoeiuv020.youdao.dagger.module.YouDaoModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -11,7 +12,7 @@ import javax.inject.Singleton
  * Created by AoEiuV020 on 2017.09.07-20:43:24.
  */
 @Singleton
-@Component(modules = arrayOf(HelloModule::class))
+@Component(modules = arrayOf(YouDaoModule::class))
 interface YouDaoComponent {
     fun inject(mainActivity: MainActivity)
 }
