@@ -2,7 +2,9 @@ package cc.aoeiuv020.youdao
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import cc.aoeiuv020.youdao.dagger.component.DaggerYouDaoComponent
+import cc.aoeiuv020.youdao.dagger.entity.Translation
 import cc.aoeiuv020.youdao.dagger.module.YouDaoModule
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -15,17 +17,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         search.setOnClickListener {
-            val observable = DaggerYouDaoComponent.builder()
+            DaggerYouDaoComponent.builder()
                     .youDaoModule(YouDaoModule("${word.text}"))
                     .build()
                     .getTranslationObservable()
-            observable.subscribeOn(Schedulers.newThread())
+                    .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { translation ->
+                    .subscribe({ translation ->
                         tran.text = translation.tran
                         phonetic.text = translation.phonetic
                         explains.text = translation.explains
-                    }
+                    }, { error ->
+                        Log.e(MainActivity::class.java.simpleName, "查询失败", error)
+                        explains.text = "查询失败"
+                    })
         }
     }
 }
