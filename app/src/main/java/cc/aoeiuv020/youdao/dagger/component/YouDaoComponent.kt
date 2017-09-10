@@ -14,6 +14,5 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(YouDaoModule::class))
 interface YouDaoComponent {
-    fun getTranslation(): Translation
     fun getTranslationObservable(): Observable<Translation>
 }

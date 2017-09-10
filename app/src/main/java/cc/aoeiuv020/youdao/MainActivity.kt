@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import cc.aoeiuv020.youdao.dagger.component.DaggerYouDaoComponent
-import cc.aoeiuv020.youdao.dagger.entity.Translation
 import cc.aoeiuv020.youdao.dagger.module.YouDaoModule
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
