@@ -17,10 +17,10 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:text="hello"
         app:layout_constraintEnd_toStartOf="@+id/search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="hello" />
 
     <ImageButton
         android:id="@+id/search"
@@ -38,21 +38,29 @@
         android:id="@+id/phonetic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/word"
-        app:layout_constraintTop_toBottomOf="@+id/word"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/tran"
+        app:layout_constraintTop_toBottomOf="@+id/tran"
         tools:text="英 [həˈləʊ]  美 [həˈlo]" />
 
     <TextView
         android:id="@+id/explains"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/phonetic"
         app:layout_constraintTop_toBottomOf="@+id/phonetic"
         tools:text="int. 喂；哈罗
 n. 表示问候， 惊奇或唤起注意时的用语
 n. (Hello)人名；(法)埃洛" />
+
+    <TextView
+        android:id="@+id/tran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="@+id/word"
+        app:layout_constraintTop_toBottomOf="@+id/word"
+        tools:text="你好" />
 </android.support.constraint.ConstraintLayout>

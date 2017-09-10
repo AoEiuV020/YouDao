@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
                         .build()
                         .getTranslation()
                 uiThread {
+                    tran.text = translation.tran
                     phonetic.text = translation.phonetic
                     explains.text = translation.explains
                 }

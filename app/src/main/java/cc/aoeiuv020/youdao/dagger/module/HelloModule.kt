@@ -17,7 +17,7 @@ class HelloModule(@Suppress("UNUSED_PARAMETER") word: String) {
     @Provides
     @Singleton
     fun translation(): Translation =
-            Translation("英 [həˈləʊ]  美 [həˈlo]",
+            Translation("你好", "英 [həˈləʊ]  美 [həˈlo]",
                     """
             int. 喂；哈罗
             n. 表示问候， 惊奇或唤起注意时的用语
