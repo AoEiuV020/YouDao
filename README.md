@@ -1,2 +1,4 @@
 # YouDao
-Dagger2练习，有道翻译，
+有道翻译，
+
+## Dagger2 + RxAndroid
