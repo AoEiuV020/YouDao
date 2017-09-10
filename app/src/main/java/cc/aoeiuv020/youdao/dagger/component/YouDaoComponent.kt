@@ -1,9 +1,9 @@
 package cc.aoeiuv020.youdao.dagger.component
 
-import android.arch.lifecycle.LiveData
 import cc.aoeiuv020.youdao.dagger.entity.Translation
 import cc.aoeiuv020.youdao.dagger.module.YouDaoModule
 import dagger.Component
+import io.reactivex.Observable
 import javax.inject.Singleton
 
 /**
@@ -15,5 +15,5 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(YouDaoModule::class))
 interface YouDaoComponent {
     fun getTranslation(): Translation
-    fun getTranslationLiveData(): LiveData<Translation>
+    fun getTranslationObservable(): Observable<Translation>
 }

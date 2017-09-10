@@ -1,15 +1,13 @@
 package cc.aoeiuv020.youdao.dagger.module
 
-import android.arch.lifecycle.LiveData
 import cc.aoeiuv020.youdao.dagger.entity.Translation
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 import javax.inject.Singleton
 
 /**
@@ -54,18 +52,8 @@ class YouDaoModule(val word: String) {
 
     @Provides
     @Singleton
-    fun translationLiveData(): LiveData<Translation> {
-        return TranslationLiveData(this::translation)
+    fun translationObservable() = Observable.create<Translation> {
+        it.onNext(translation())
     }
 }
 
-class TranslationLiveData(val block: () -> Translation) : LiveData<Translation>() {
-    override fun onActive() {
-        doAsync {
-            val translation = block()
-            uiThread {
-                value = translation
-            }
-        }
-    }
-}
