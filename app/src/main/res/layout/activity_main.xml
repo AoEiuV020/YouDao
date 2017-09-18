@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cc.aoeiuv020.youdao.MainActivity"
+    tools:context="cc.aoeiuv020.youdao.ui.MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
@@ -28,11 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
         android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_search"
         app:layout_constraintBottom_toBottomOf="@+id/word"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/word"
-        app:layout_constraintTop_toTopOf="@+id/word"
-        android:src="@drawable/ic_search" />
+        app:layout_constraintTop_toTopOf="@+id/word" />
 
     <TextView
         android:id="@+id/phonetic"
