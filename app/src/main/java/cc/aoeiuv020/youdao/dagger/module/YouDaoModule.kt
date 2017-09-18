@@ -4,7 +4,6 @@ import cc.aoeiuv020.youdao.dagger.entity.Translation
 import cc.aoeiuv020.youdao.retrofit.api.YouDaoApi
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 /**
  * 调用有道api得到翻译，
@@ -18,7 +17,6 @@ class YouDaoModule(val word: String) {
     private val youDaoApi = YouDaoApi.create()
 
     @Provides
-    @Singleton
     fun translationObservable() = youDaoApi.getTranslation(word).map {
         var tran = ""
         var phonetic = ""

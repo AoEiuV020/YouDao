@@ -3,7 +3,6 @@ package cc.aoeiuv020.youdao
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import cc.aoeiuv020.youdao.dagger.component.DaggerYouDaoComponent
 import cc.aoeiuv020.youdao.dagger.module.YouDaoModule
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -16,9 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         search.setOnClickListener {
-            DaggerYouDaoComponent.builder()
-                    .youDaoModule(YouDaoModule("${word.text}"))
-                    .build()
+            App.component.plus(YouDaoModule("${word.text}"))
                     .getTranslationObservable()
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
