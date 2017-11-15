@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModel
 import android.databinding.BaseObservable
 import android.util.Log
 import cc.aoeiuv020.youdao.ui.MainActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 /**
@@ -16,8 +15,7 @@ class MainViewModel : ViewModel() {
     private val source: TranslationDataSource = YouDaoDataSource()
 
     fun search(word: String) {
-        source.search(word).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe({ translation ->
+        source.search(word).subscribeOn(Schedulers.io()).subscribe({ translation ->
             data.tran = translation.tran
             data.phonetic = translation.phonetic
             data.explains = translation.explains
