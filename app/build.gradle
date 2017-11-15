@@ -6,7 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "cc.aoeiuv020.youdao"
         minSdkVersion 25
@@ -36,7 +35,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.11'
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     implementation 'com.google.code.gson:gson:2.8.1'
-    implementation 'org.jetbrains.anko:anko-commons:0.10.1'
+    implementation 'org.jetbrains.anko:anko-commons:0.10.2'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 // Because RxAndroid releases are few and far between, it is recommended you also
 // explicitly depend on RxJava's latest version for bug fixes and new features.
