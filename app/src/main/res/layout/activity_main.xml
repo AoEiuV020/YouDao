@@ -1,66 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="cc.aoeiuv020.youdao.ui.MainActivity"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="81dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditText
-        android:id="@+id/word"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="hello" />
+    <data>
 
-    <ImageButton
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_search"
-        app:layout_constraintBottom_toBottomOf="@+id/word"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/word"
-        app:layout_constraintTop_toTopOf="@+id/word" />
+        <variable
+            name="translation"
+            type="cc.aoeiuv020.youdao.mvvm.TranslationData" />
+    </data>
 
-    <TextView
-        android:id="@+id/phonetic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/tran"
-        app:layout_constraintTop_toBottomOf="@+id/tran"
-        tools:text="英 [həˈləʊ]  美 [həˈlo]" />
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="cc.aoeiuv020.youdao.ui.MainActivity"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="81dp">
 
-    <TextView
-        android:id="@+id/explains"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/phonetic"
-        app:layout_constraintTop_toBottomOf="@+id/phonetic"
-        tools:text="int. 喂；哈罗
+        <EditText
+            android:id="@+id/word"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@={translation.word}"
+            app:layout_constraintEnd_toStartOf="@+id/search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="hello" />
+
+        <ImageButton
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> translation.search()}"
+            android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@+id/word"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/word"
+            app:layout_constraintTop_toTopOf="@+id/word" />
+
+        <TextView
+            android:id="@+id/phonetic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{translation.phonetic}"
+            app:layout_constraintStart_toStartOf="@+id/tran"
+            app:layout_constraintTop_toBottomOf="@+id/tran"
+            tools:text="英 [həˈləʊ]  美 [həˈlo]" />
+
+        <TextView
+            android:id="@+id/explains"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{translation.explains}"
+            app:layout_constraintStart_toStartOf="@+id/phonetic"
+            app:layout_constraintTop_toBottomOf="@+id/phonetic"
+            tools:text="int. 喂；哈罗
 n. 表示问候， 惊奇或唤起注意时的用语
 n. (Hello)人名；(法)埃洛" />
 
-    <TextView
-        android:id="@+id/tran"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="@+id/word"
-        app:layout_constraintTop_toBottomOf="@+id/word"
-        tools:text="你好" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/tran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{translation.tran}"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toStartOf="@+id/word"
+            app:layout_constraintTop_toBottomOf="@+id/word"
+            tools:text="你好" />
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

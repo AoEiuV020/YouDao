@@ -1,5 +1,6 @@
-package cc.aoeiuv020.youdao.presenter
+package cc.aoeiuv020.youdao.mvvm
 
+import android.databinding.BaseObservable
 import android.util.Log
 import cc.aoeiuv020.youdao.App
 import cc.aoeiuv020.youdao.dagger.module.YouDaoModule
@@ -8,21 +9,30 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 /**
- * presenter,
- * Created by AoEiuV020 on 2017.09.18-15:12:09.
+ *
+ * Created by AoEiuV020 on 2017.11.15-14:26:00.
  */
-class MainPresenter(private val view: MainActivity) {
-    fun requestTranslation(word: String) {
+class TranslationData(
+        var word: String = "",
+        var tran: String = "",
+        var phonetic: String = "",
+        var explains: String = ""
+) : BaseObservable() {
+    fun search() {
         App.component.plus(YouDaoModule(word))
                 .getTranslationObservable()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ translation ->
-                    view.showResult(translation)
+                    tran = translation.tran
+                    phonetic = translation.phonetic
+                    explains = translation.explains
+                    notifyChange()
                 }, { e ->
                     val message = "查询失败"
                     Log.e(MainActivity::class.java.simpleName, message, e)
-                    view.showError(message)
+                    explains = message
+                    notifyChange()
                 })
     }
 }
