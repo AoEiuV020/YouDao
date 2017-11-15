@@ -14,8 +14,8 @@ class MainViewModel : ViewModel() {
     val data = Translation()
     private val source: TranslationDataSource = YouDaoDataSource()
 
-    fun search(word: String) {
-        source.search(word).subscribeOn(Schedulers.io()).subscribe({ translation ->
+    fun search() {
+        source.search(data.word).subscribeOn(Schedulers.io()).subscribe({ translation ->
             data.tran = translation.tran
             data.phonetic = translation.phonetic
             data.explains = translation.explains
@@ -34,8 +34,8 @@ class MainViewModel : ViewModel() {
             var phonetic: String = "",
             var explains: String = ""
     ) : BaseObservable() {
-        fun search() {
-            search(word)
+        fun onSearch() {
+            search()
         }
     }
 }
