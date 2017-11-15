@@ -2,6 +2,7 @@ package cc.aoeiuv020.youdao.mvvm
 
 import cc.aoeiuv020.youdao.retrofit.api.YouDaoApi
 import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 
 /**
  *
@@ -30,5 +31,5 @@ class YouDaoDataSource : TranslationDataSource {
             }
         }
         TranslationData(tran, phonetic, explains)
-    }
+    }.subscribeOn(Schedulers.io())
 }
